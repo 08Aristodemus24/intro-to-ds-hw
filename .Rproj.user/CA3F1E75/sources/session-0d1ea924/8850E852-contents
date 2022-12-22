@@ -1,7 +1,0 @@
-library(dplyr)
-
-print("test")
-
-mod <- function(element) {
-  return(if(element == 97) 0 else 100)
-}
