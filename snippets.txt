@@ -1,0 +1,3 @@
+college_df['HW.3']
+mod <- function(element) { return(if(element == 97) 0 else 100) }
+sapply(college_df['HW.3'], mod)
