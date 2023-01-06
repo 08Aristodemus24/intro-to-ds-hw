@@ -13,7 +13,7 @@ Final Grade	Final Grade in Percentage
 4.0	[ 0 – 49 ]
 
 2. Max absences is 6. Students who exceeded the limit will get a grade of 5.0.
-3. Missed exams or HW: 0
+3. Missed or NA exams or HW particularly exam 2 and hw 2 will be set to 0
 4. Cheating will get 0 points on that specific HW/Exam.
 5. add a bonus of 5 points to be added in their final percentage grades.
 
