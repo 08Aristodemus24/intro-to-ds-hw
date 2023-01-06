@@ -41,14 +41,45 @@ goe_97_rows <- college_df['HW.3'] >= 97
 print(goe_97_rows)
 
 # college_df$HW.3[goe_97_rows] <- 0
+# college_df$HW.3[!goe_97_rows] <- 100
 # print(college_df)
 
+# write a callback function for apply to
+# modify rows in a column that is >= 97
 cheaters_to_zero <- function(hw3_x){
   print(hw3_x)
   return (if(hw3_x >= 97) 0 else 100)
 }
 
-college_df$HW.3 <- lapply(college_df$HW.3, cheaters_to_zero)
+# use callback in apply and use its result to
+# modify the HW.3 column in college_df
+college_df$HW.3 <- sapply(college_df$HW.3, cheaters_to_zero)
 print(college_df)
 
+# write another callback for apply to
+# modify rows in a column that is NA
+resolve_missed <- function(col_i){
+  return (if(is.na(col_i)) 0 else col_i)
+}
 
+# use callback in columns HW.2 and Exam.2 use resulting
+# vectors to modify HW.2 and Exam.2 in college_df
+# note: use sapply since it returns individual values 
+# like ints and numerics instead of a list
+college_df$HW.2 <- sapply(college_df$HW.2, resolve_missed)
+college_df$Exam.2 <- sapply(college_df$Exam.2, resolve_missed)
+print(college_df)
+
+# check the data type of each column of college_df
+sapply(college_df, class)
+
+# create new columns HW Mean and Exam Mean that 
+# represent the mean of columns HW1, HW2, and 
+# HW3 and Exam1, and Exam2 respectively
+# select all the rows of college_df but constraining 
+# the columns to only hw1, hw2, and hw3
+print(rowMeans(college_df[, c("HW.1", "HW.2", "HW.3")], na.rm=TRUE))
+college_df['HW Mean'] <- rowMeans(college_df[, c("HW.1", "HW.2", "HW.3")], na.rm=TRUE)
+
+print(rowMeans(college_df[, c("Exam.1", "Exam.2")], na.rm=TRUE))
+college_df['Exam Mean'] <- rowMeans(college_df[, c("Exam.1", "Exam.2")], na.rm=TRUE)
