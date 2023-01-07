@@ -79,7 +79,29 @@ sapply(college_df, class)
 # select all the rows of college_df but constraining 
 # the columns to only hw1, hw2, and hw3
 print(rowMeans(college_df[, c("HW.1", "HW.2", "HW.3")], na.rm=TRUE))
-college_df['HW Mean'] <- rowMeans(college_df[, c("HW.1", "HW.2", "HW.3")], na.rm=TRUE)
+college_df['HW.Mean'] <- rowMeans(college_df[, c("HW.1", "HW.2", "HW.3")], na.rm=TRUE)
 
 print(rowMeans(college_df[, c("Exam.1", "Exam.2")], na.rm=TRUE))
-college_df['Exam Mean'] <- rowMeans(college_df[, c("Exam.1", "Exam.2")], na.rm=TRUE)
+college_df['Exam.Mean'] <- rowMeans(college_df[, c("Exam.1", "Exam.2")], na.rm=TRUE)
+
+# write a callback to compute the final grade using the 
+# values of each column in each row of the dataset
+compute_final_grade <- function(x){
+  # since x is a vector access it via ['<column name']
+  # using array notation/indexing
+  print(x)
+  
+  # get 30% of hw mean
+  print(x)
+  print(length(x))
+  print(nrow(x))
+  # get 30% of long exams
+  
+  
+  # get 40% of final exam
+  
+}
+
+# use the callback in apply (instead of sapply) and 
+# use its return value for new column FG Per in college_df
+apply(select(college_df, HW.Mean, Exam.Mean, Final.Exam), 1, compute_final_grade)
