@@ -1,4 +1,4 @@
-library(dplyr)
+afplibrary(dplyr)
 
 # load and display college data frame
 college_df <- read.csv('college_students_w_header - college_students_w_header.csv', header=T)
